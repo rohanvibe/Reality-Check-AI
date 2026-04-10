@@ -4,12 +4,20 @@ import { Loader2, Send, History as HistoryIcon, Skull, RefreshCw, X } from 'luci
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 
+const safeGetItem = (key: string) => {
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
+};
+
 export default function App() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<RealityCheckResult | null>(null);
   const [history, setHistory] = useState<RealityCheckResult[]>([]);
-  const [customKey, setCustomKey] = useState(localStorage.getItem('custom_sambanova_api_key') || '');
+  const [customKey, setCustomKey] = useState(safeGetItem('custom_sambanova_api_key') || '');
   const [showHistory, setShowHistory] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [usageTimestamps, setUsageTimestamps] = useState<number[]>([]);
@@ -36,9 +44,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const saved = localStorage.getItem('reality_check_history');
+    const saved = safeGetItem('reality_check_history');
     if (saved) setHistory(JSON.parse(saved));
-    const usage = localStorage.getItem('usage_limit_v1');
+    const usage = safeGetItem('usage_limit_v1');
     if (usage) setUsageTimestamps(JSON.parse(usage));
   }, []);
 

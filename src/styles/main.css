@@ -184,7 +184,7 @@ h1, h2, h3, h4 {
   .center-stage {
     padding-top: 7rem !important; 
     justify-content: flex-start !important; /* Stack from top, don't center vertically */
-    min-height: 100svh !important;
+    min-height: 100vh !important;
     display: block !important; /* Force standard block flow */
   }
   
