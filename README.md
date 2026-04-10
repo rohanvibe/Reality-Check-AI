@@ -2,7 +2,7 @@
 
 **"Your ideas are vulnerable. Let's find out why."**
 
-Reality Check AI is a high-performance, logic-driven tool that provides brutally honest feedback on your ideas, plans, and goals. Designed for builders who value cold truth over warm motivation, it uses SambaNova's Llama 3.1 70B to identify failure points before the real world does.
+Reality Check AI is a high-performance, logic-driven tool that provides brutally honest feedback on your ideas, plans, and goals. Designed for builders who value cold truth over warm motivation, it uses SambaNova's Llama 3.1 8B to identify failure points before the real world does.
 
 ![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)
 ![PWA](https://img.shields.io/badge/PWA-Enabled-orange)
@@ -12,7 +12,7 @@ Reality Check AI is a high-performance, logic-driven tool that provides brutally
 
 ## 🚀 Key Features
 
-- **Brutal Logic Engine**: Powered by Llama 3.1 70B for high-fidelity critical thinking.
+- **Brutal Logic Engine**: Powered by Llama 3.1 8B for high-fidelity critical thinking.
 - **Deep Failure Analysis**: Breaks down ideas into Core Problems, Failure Risks, and Missing Pieces.
 - **Full PWA Experience**: Installable on iOS/Android/Desktop. Works offline for browsing history.
 - **Privacy First**: History is stored 100% locally in your browser.

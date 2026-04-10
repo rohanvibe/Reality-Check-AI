@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file.
 ## [1.0.0] - 2026-04-10
 ### Added
 - MVP launch of Reality Check AI.
-- SambaNova (Llama 3.1 70B) integration.
+- SambaNova (Llama 3.1 8B) integration.
 - Brutal logic feedback engine.
 - Session history (localStorage).
 - Rate limiting (5 req/hr).
