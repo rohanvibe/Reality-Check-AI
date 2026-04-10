@@ -15,28 +15,20 @@ Your response MUST be in the following JSON format:
 `;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  res.setHeader('x-api-version', '1.2.1');
-  // 1. Method Security
+  res.setHeader('x-api-version', '1.2.2');
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   const { userInput } = req.body;
-
-  // 2. Input Validation (Security against large data / injection)
   if (!userInput || typeof userInput !== 'string') {
     return res.status(400).json({ error: 'Invalid input' });
   }
 
-  if (userInput.length > 2000) {
-    return res.status(400).json({ error: 'Input too long. Keep it under 2000 characters.' });
-  }
-
-  // 3. Environment Security
   const apiKey = process.env.SAMBANOVA_API_KEY;
   if (!apiKey) {
-    console.error('SERVER ERROR: SAMBANOVA_API_KEY is not defined in environment.');
-    return res.status(500).json({ error: 'Server misconfiguration.' });
+    return res.status(500).json({ error: 'Server misconfiguration: API Key missing.' });
   }
 
   try {
@@ -44,7 +36,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'RealityCheckAI/1.0'
       },
       body: JSON.stringify({
         model: "Meta-Llama-3.1-70B-Instruct",
@@ -52,39 +45,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userInput }
         ],
-        temperature: 0.7,
+        temperature: 0.1,
         response_format: { type: "json_object" }
       })
     });
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      console.error('SAMBANOVA API ERROR:', response.status, errorData);
+      const errorText = await response.text();
+      console.error('SAMBANOVA ERROR RAW:', response.status, errorText);
       
-      if (response.status === 401 || response.status === 403) {
-        return res.status(response.status).json({ 
-          error: 'Authentication failed. Check if your API Key is correct in Vercel settings.' 
-        });
-      }
-
       return res.status(response.status).json({ 
-        error: 'The AI engine is currently busy. Please try again in a few moments.' 
+        error: `AI Engine Error (${response.status}). Check Vercel logs for raw details.` 
       });
     }
 
     const data = await response.json();
-    const content = data.choices[0].message.content;
-
-    // 4. Safe Parsing
-    try {
-      const parsed = JSON.parse(content);
-      return res.status(200).json(parsed);
-    } catch (parseError) {
-      return res.status(500).json({ error: 'AI returned an invalid format.' });
-    }
+    return res.status(200).json(JSON.parse(data.choices[0].message.content));
 
   } catch (error: any) {
-    console.error('FETCH ERROR:', error.message);
+    console.error('SERVER FETCH ERROR:', error.message);
     return res.status(500).json({ error: 'Internal server connection error.' });
   }
 }
