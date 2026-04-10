@@ -40,7 +40,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'User-Agent': 'RealityCheckAI/1.0'
       },
       body: JSON.stringify({
-        model: "Meta-Llama-3.1-70B-Instruct",
+        model: "Meta-Llama-3.1-8B-Instruct", // Switching to 8B for maximum compatibility
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userInput }
