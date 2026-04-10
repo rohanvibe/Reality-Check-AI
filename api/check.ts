@@ -58,6 +58,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
+      console.error('SAMBANOVA API ERROR:', response.status, errorData);
+      
+      if (response.status === 401 || response.status === 403) {
+        return res.status(response.status).json({ 
+          error: 'Authentication failed. Check if your API Key is correct in Vercel settings.' 
+        });
+      }
+
       return res.status(response.status).json({ 
         error: 'The AI engine is currently busy. Please try again in a few moments.' 
       });
