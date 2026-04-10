@@ -1,6 +1,9 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { 
+      "source": "/((?!api|favicon|icon|manifest|sw.js).*)", 
+      "destination": "/" 
+    }
   ],
   "headers": [
     {
