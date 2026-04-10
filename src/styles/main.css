@@ -178,3 +178,28 @@ h1, h2, h3, h4 {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--accent);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .center-stage {
+    padding-top: 6rem !important; /* Push down more on mobile to clear header */
+  }
+  
+  h2 {
+    font-size: clamp(2.2rem, 12vw, 4rem) !important;
+  }
+  
+  .header-container {
+    padding: 1rem !important;
+  }
+
+  .logo-text {
+    font-size: 1.1rem !important;
+  }
+
+  .main-input {
+    padding: 1.5rem !important;
+    font-size: 1.1rem !important;
+    min-height: 250px !important;
+  }
+}

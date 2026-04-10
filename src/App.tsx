@@ -124,7 +124,7 @@ export default function App() {
       {/* Header */}
       <AnimatePresence>
         {!result && (
-          <header style={headerStyle}>
+          <header style={headerStyle} className="header-container">
             <div style={{ maxWidth: '1400px', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
               <button 
                 onClick={() => setShowSettings(true)} 
@@ -134,10 +134,10 @@ export default function App() {
                 SETTINGS
               </button>
               
-              <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '1.5rem', pointerEvents: 'none' }}>
+              <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '1.5rem', pointerEvents: 'none' }} className="logo-wrapper">
                 <Skull size={32} style={{ color: '#ff3e3e' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <h1 style={{ fontSize: '1.5rem', margin: 0, whiteSpace: 'nowrap' }}>REALITY CHECK AI</h1>
+                  <h1 style={{ fontSize: '1.5rem', margin: 0, whiteSpace: 'nowrap' }} className="logo-text">REALITY CHECK AI</h1>
                   {!isOnline && (
                     <span style={{ fontSize: '0.6rem', color: '#ff3e3e', fontWeight: 900, letterSpacing: '0.1em' }}>[ OFFLINE MODE ]</span>
                   )}
@@ -157,7 +157,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Main Content */}
-      <main style={layoutStyle}>
+      <main style={layoutStyle} className="center-stage">
         <AnimatePresence mode="wait">
           {!result && !loading ? (
             <motion.div 
@@ -165,7 +165,8 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              style={{ width: '100%', maxWidth: '1200px' }}
+              style={{ width: '100%' }}
+              className="max-w-container"
             >
               <h2 style={{ fontSize: 'clamp(3rem, 10vw, 8rem)', marginBottom: '2rem', lineHeight: 0.9 }}>
                 Get <span style={{ color: '#ff3e3e' }}>Brutally Honest</span> Feedback.
