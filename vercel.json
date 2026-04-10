@@ -1,9 +1,11 @@
 {
   "rewrites": [
-    { 
-      "source": "/((?!api|favicon|icon|manifest|sw.js).*)", 
-      "destination": "/" 
-    }
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/favicon.svg", "destination": "/favicon.svg" },
+    { "source": "/manifest.json", "destination": "/manifest.json" },
+    { "source": "/sw.js", "destination": "/sw.js" },
+    { "source": "/icon-(.*).png", "destination": "/icon-$1.png" },
+    { "source": "/(.*)", "destination": "/" }
   ],
   "headers": [
     {

@@ -15,6 +15,7 @@ Your response MUST be in the following JSON format:
 `;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  res.setHeader('x-api-version', '1.2.1');
   // 1. Method Security
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
