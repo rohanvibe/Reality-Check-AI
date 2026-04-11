@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getRealityCheck, type RealityCheckResult } from './logic/ai';
-import { Loader2, Send, History as HistoryIcon, Skull, RefreshCw, X, Settings } from 'lucide-react';
+import { Loader2, Send, History as HistoryIcon, Skull, RefreshCw, X, Cog } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 
@@ -139,7 +139,13 @@ export default function App() {
                 className="btn-secondary flex items-center gap-2"
                 style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
               >
-                <Settings size={18} /> <span className="hide-mobile">SETTINGS</span>
+              <button 
+                onClick={() => setShowSettings(true)} 
+                className="btn-secondary flex items-center gap-2"
+                style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
+              >
+                {Cog ? <Cog size={18} /> : null} <span className="hide-mobile">SETTINGS</span>
+              </button>
               </button>
               
               <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '1.5rem', pointerEvents: 'none' }} className="logo-wrapper">
