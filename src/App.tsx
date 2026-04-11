@@ -120,7 +120,7 @@ export default function App() {
     top: 0,
     left: 0,
     width: '100%',
-    padding: '1.2rem 2rem', // Moved further up
+    padding: '1.2rem 2rem', 
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -139,13 +139,7 @@ export default function App() {
                 className="btn-secondary flex items-center gap-2"
                 style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
               >
-              <button 
-                onClick={() => setShowSettings(true)} 
-                className="btn-secondary flex items-center gap-2"
-                style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
-              >
                 {Cog ? <Cog size={18} /> : null} <span className="hide-mobile">SETTINGS</span>
-              </button>
               </button>
               
               <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '1.5rem', pointerEvents: 'none' }} className="logo-wrapper">
@@ -163,7 +157,7 @@ export default function App() {
                 className="btn-secondary flex items-center gap-2"
                 style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
               >
-                <HistoryIcon size={18} /> <span className="hide-mobile">HISTORY</span>
+                {HistoryIcon ? <HistoryIcon size={18} /> : null} <span className="hide-mobile">HISTORY</span>
               </button>
             </div>
           </header>
