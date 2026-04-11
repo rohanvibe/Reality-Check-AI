@@ -179,19 +179,24 @@ h1, h2, h3, h4 {
   border-color: var(--accent);
 }
 
-/* Mobile Responsiveness */
+/* Mobile Responsiveness & Diagnostics */
 @media (max-width: 768px) {
+  body {
+    background-color: #ff0000 !important; /* DEBUG: If screen is RED, CSS is loading! */
+  }
+
   .center-stage {
     padding-top: 7rem !important; 
-    justify-content: flex-start !important; /* Stack from top, don't center vertically */
+    justify-content: flex-start !important; 
     min-height: 100vh !important;
-    display: block !important; /* Force standard block flow */
+    min-height: -webkit-fill-available !important;
+    display: block !important; 
   }
   
   .max-w-container {
     opacity: 1 !important;
     transform: none !important;
-    text-align: left; /* Better readability on small screens */
+    text-align: left;
   }
   
   h2 {
