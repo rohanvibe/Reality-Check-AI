@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getRealityCheck, type RealityCheckResult } from './logic/ai';
-import { Loader2, Send, History as HistoryIcon, Skull, RefreshCw, X, Settings } from 'lucide-react';
+import { Loader2, Send, History as HistoryIcon, Skull, RefreshCw, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 
@@ -120,7 +120,7 @@ export default function App() {
     top: 0,
     left: 0,
     width: '100%',
-    padding: '1.2rem 2rem',
+    padding: '1.2rem 2rem', // Moved further up
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -133,23 +133,21 @@ export default function App() {
       <AnimatePresence>
         {!result && (
           <header style={headerStyle} className="header-container">
-            <div style={{ maxWidth: '1400px', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ maxWidth: '1400px', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
               <button 
                 onClick={() => setShowSettings(true)} 
                 className="btn-secondary flex items-center gap-2"
-                title="Settings"
                 style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
               >
-                <Settings size={18} />
-                <span className="nav-btn-text">SETTINGS</span>
+                SETTINGS
               </button>
               
-              <div className="logo-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '1rem', pointerEvents: 'none' }}>
-                <Skull size={24} style={{ color: '#ff3e3e' }} />
+              <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '1.5rem', pointerEvents: 'none' }} className="logo-wrapper">
+                <Skull size={32} style={{ color: '#ff3e3e' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <h1 className="logo-text" style={{ fontSize: '1.4rem', margin: 0, whiteSpace: 'nowrap' }}>REALITY CHECK AI</h1>
+                  <h1 style={{ fontSize: '1.5rem', margin: 0, whiteSpace: 'nowrap' }} className="logo-text">REALITY CHECK AI</h1>
                   {!isOnline && (
-                    <span style={{ fontSize: '0.6rem', color: '#ff3e3e', fontWeight: 900, letterSpacing: '0.1em' }}>[ OFFLINE ]</span>
+                    <span style={{ fontSize: '0.6rem', color: '#ff3e3e', fontWeight: 900, letterSpacing: '0.1em' }}>[ OFFLINE MODE ]</span>
                   )}
                 </div>
               </div>
@@ -157,11 +155,9 @@ export default function App() {
               <button 
                 onClick={() => setShowHistory(true)} 
                 className="btn-secondary flex items-center gap-2"
-                title="History"
                 style={{ fontSize: '0.75rem', padding: '0.6rem 1.2rem' }}
               >
-                <HistoryIcon size={18} /> 
-                <span className="nav-btn-text">HISTORY</span>
+                <HistoryIcon size={16} /> HISTORY
               </button>
             </div>
           </header>

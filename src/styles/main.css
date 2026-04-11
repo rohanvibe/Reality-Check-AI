@@ -182,7 +182,7 @@ h1, h2, h3, h4 {
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .center-stage {
-    padding-top: 8rem !important; 
+    padding-top: 8rem !important; /* Increased to 8rem to definitely clear header */
     justify-content: flex-start !important; 
     min-height: 100vh !important;
     display: flex !important; 
@@ -192,7 +192,7 @@ h1, h2, h3, h4 {
   .max-w-container {
     opacity: 1 !important;
     transform: none !important;
-    text-align: center;
+    text-align: center; /* Back to centered as requested */
   }
   
   h2 {
@@ -215,20 +215,7 @@ h1, h2, h3, h4 {
   }
 
   .logo-text {
-    font-size: 1rem !important;
-  }
-
-  .nav-btn-text {
-    display: none !important;
-  }
-  
-  .btn-secondary {
-    padding: 0.8rem !important;
-    min-width: 44px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 0.9rem !important; /* Slightly smaller to prevent crunching */
   }
 
   .main-input {
