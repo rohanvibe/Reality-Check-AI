@@ -1,4 +1,5 @@
-const CACHE_NAME = 'reality-check-v1';
+const SW_VERSION = 'v1.2.3'; // FORCE UPDATE
+const CACHE_NAME = `reality-check-cache-${SW_VERSION}`;
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
