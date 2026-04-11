@@ -224,4 +224,16 @@ h1, h2, h3, h4 {
     min-height: 220px !important;
     border-radius: 16px !important;
   }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .btn-secondary {
+    padding: 0.8rem !important;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
